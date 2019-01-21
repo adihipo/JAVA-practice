@@ -1,31 +1,31 @@
-public abstract class Animal {
+abstract class Animal {
 
   private String name;
   private int age;
 
-  public Animal() {
+  Animal() {
   }
 
-  public Animal(String name, int age) {
+  Animal(String name, int age) {
     this.name = name;
     this.age = age;
   }
 
-  public String getName() {
+  String getName() {
     return this.name;
   }
 
-  public void setName(String name) {
+  void setName(String name) {
     this.name = name;
   }
 
-  public int getAge() {
+  int getAge() {
     return this.age;
   }
 
-  public void setAge(int age) {
+  void setAge(int age) {
     this.age = age;
   }
 
-  public abstract String makeSomeNoise();
+  abstract String makeSomeNoise();
 }

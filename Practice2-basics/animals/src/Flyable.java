@@ -1,4 +1,4 @@
-public interface Flyable {
+interface Flyable {
 
   String fly();
 }

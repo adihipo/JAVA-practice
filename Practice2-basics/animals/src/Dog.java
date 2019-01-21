@@ -1,15 +1,15 @@
-public class Dog extends Animal{
+class Dog extends Animal{
 
-  public Dog() {
+  Dog() {
     super();
   }
 
-  public Dog(String name, int age) {
+  Dog(String name, int age) {
     super(name, age);
   }
 
   @Override
-  public String makeSomeNoise() {
+  String makeSomeNoise() {
     return "vau vau vau";
   }
 }

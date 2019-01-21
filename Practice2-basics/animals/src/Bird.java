@@ -1,15 +1,15 @@
-public class Bird extends Animal implements Flyable{
+class Bird extends Animal implements Flyable{
 
-  public Bird() {
+  Bird() {
     super();
   }
 
-  public Bird(String name, int age) {
+  Bird(String name, int age) {
     super(name, age);
   }
 
   @Override
-  public String makeSomeNoise() {
+  String makeSomeNoise() {
     return "chirp chirp";
   }
 
