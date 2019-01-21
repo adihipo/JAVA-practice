@@ -9,4 +9,12 @@ public class Animals {
     animals = new ArrayList<>();
   }
 
+  public List<Animal> getAnimals() {
+    return this.animals;
+  }
+
+  public void setAnimals(List<Animal> animals) {
+    this.animals = animals;
+  }
+
 }

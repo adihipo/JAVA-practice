@@ -23,7 +23,11 @@ public class Animal {
     return this.age;
   }
 
-  public void setAge() {
+  public void setAge(int age) {
     this.age = age;
+  }
+
+  public String makeSomeNoise() {
+    return "";
   }
 }
