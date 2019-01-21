@@ -6,6 +6,7 @@ public class Main {
   public static void main(String[] args) {
     Animals animals = createAnimals();
     makeNoiseAnimals(animals);
+    flyWhoCan(animals);
   }
 
   static Animals createAnimals() {
@@ -26,4 +27,13 @@ public class Main {
       System.out.println(animal.makeSomeNoise());
     }
   }
+
+  static void flyWhoCan(Animals animals) {
+    for (Animal animal : animals.getAnimals()) {
+      if(animal instanceof Flyable) {
+        System.out.println(((Flyable) animal).fly());
+      }
+    }
+  }
+
 }

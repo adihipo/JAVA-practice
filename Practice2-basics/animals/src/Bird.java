@@ -1,4 +1,4 @@
-public class Bird extends Animal {
+public class Bird extends Animal implements Flyable{
 
   public Bird() {
     super();
@@ -11,5 +11,10 @@ public class Bird extends Animal {
   @Override
   public String makeSomeNoise() {
     return "chirp chirp";
+  }
+
+  @Override
+  public String fly() {
+    return "flaps proudly";
   }
 }
