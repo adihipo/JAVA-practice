@@ -1,4 +1,4 @@
-public class Animal {
+public abstract class Animal {
 
   private String name;
   private int age;
@@ -27,7 +27,5 @@ public class Animal {
     this.age = age;
   }
 
-  public String makeSomeNoise() {
-    return "";
-  }
+  public abstract String makeSomeNoise();
 }
