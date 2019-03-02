@@ -10,4 +10,9 @@ public class DanceController {
   public String indexPage() {
     return "index";
   }
+
+  @RequestMapping("/dance")
+  public String dancePage() {
+    return "dance";
+  }
 }
