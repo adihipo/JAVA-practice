@@ -1,0 +1,32 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.background {
+    min-height: 100%;
+    background: linear-gradient(
+    45deg,
+    #002f4b,#dc4225);
+}
+
+.pic {
+  width: 100%;
+  height: 100px;
+  background-color: black;
+}
+
+.pic h1 {
+  position: absolute;
+  margin-left: 20px;
+  color: white;
+}
+
+.content {
+  width: 50%;
+  background-color: lightgray;
+  border-radius: 10px;
+  padding: 10px;
+  display: block;
+  margin: 100px auto;
+}
