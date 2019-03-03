@@ -1,5 +1,6 @@
 const allMusic = ["cold.mp3", "bonfire.mp3", "betty.mp3", "babylon.mp3", "bangarang.mp3",
-                  "closer.mp3", "halloween.mp3", "internet.mp3", "motivation.mp3", "somebody.mp3"];
+                  "closer.mp3", "halloween.mp3", "internet.mp3", "motivation.mp3", "somebody.mp3",
+                  "404.mp3", "ghost.mp3", "glove.mp3", "templom.mp3"];
 const background = document.getElementsByClassName('background')[0];
 
 setInterval(() => changeBackground(), 3000);
