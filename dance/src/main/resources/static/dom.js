@@ -25,7 +25,9 @@ function changeImage(element, origin){
   let src = element.getAttribute("src");
   if(src == origin + ".png") {
     src = origin + "_up.png";
-  }else {
+  }else if(src == origin + "_up.png"){
+    src = origin + "_alt.png";
+  }else if(src == origin + "_alt.png"){
     src = origin + ".png";
   }
   element.setAttribute("src", src);
