@@ -1,5 +1,8 @@
 const allMusic = ["cold.mp3", "bonfire.mp3", "betty.mp3", "babylon.mp3", "bangarang.mp3",
                   "closer.mp3", "halloween.mp3", "internet.mp3", "motivation.mp3", "somebody.mp3"];
+const background = document.getElementsByClassName('background')[0];
+
+setInterval(() => changeBackground(), 3000);
 
 window.addEventListener('keyup', function(e){
    let code = e.which || e.keyCode;
@@ -42,3 +45,8 @@ function changeMusic(element){
     element.setAttribute("src", allMusic[random]);
   }
 }
+
+function changeBackground(){
+  background.setAttribute("style", "background: linear-gradient(45deg, white, black);")
+}
+
