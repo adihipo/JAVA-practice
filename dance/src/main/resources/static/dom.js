@@ -1,14 +1,23 @@
 window.addEventListener('keyup', function(e){
-  const arms = document.getElementsByClassName('arms')[0];
-  changeImage(arms);
+   let code = e.which || e.keyCode;
+   if (code == '38') {  // Up
+
+   }else if (code == '40') { // Down
+
+   }else if (code == '37') { // Left
+
+   }else if (code == '39') { // Right
+     const arms = document.getElementsByClassName('arms')[0];
+     changeImage(arms, "arms");
+   }
 });
 
-function changeImage(element){
+function changeImage(element, origin){
   let src = element.getAttribute("src");
-  if(src == "arms.png") {
-    src = "arms_up.png";
+  if(src == origin + ".png") {
+    src = origin + "_up.png";
   }else {
-    src = "arms.png";
+    src = origin + ".png";
   }
   element.setAttribute("src", src);
 }
