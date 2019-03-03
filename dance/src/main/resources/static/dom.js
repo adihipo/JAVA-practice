@@ -4,7 +4,7 @@ const background = document.getElementsByClassName('background')[0];
 
 setInterval(() => changeBackground(), 3000);
 
-window.addEventListener('keyup', function(e){
+window.addEventListener('keyup', function(e) {
    let code = e.which || e.keyCode;
    if (code == '38') {  // Up
      const base = document.getElementsByClassName('base')[0];
@@ -24,7 +24,7 @@ window.addEventListener('keyup', function(e){
    }
 });
 
-function changeImage(element, origin){
+function changeImage(element, origin) {
   let src = element.getAttribute("src");
   if(src == origin + ".png") {
     src = origin + "_up.png";
@@ -36,7 +36,7 @@ function changeImage(element, origin){
   element.setAttribute("src", src);
 }
 
-function changeMusic(element){
+function changeMusic(element) {
   let src = element.getAttribute("src");
   let random = Math.floor(Math.random() * allMusic.length);
   if(src == allMusic[random]) {
@@ -46,7 +46,20 @@ function changeMusic(element){
   }
 }
 
-function changeBackground(){
-  background.setAttribute("style", "background: linear-gradient(45deg, white, black);")
+function changeBackground() {
+  background.setAttribute("style", "background: linear-gradient(" + getRandomDegree() + "deg, " + getRandomColor() + ", " + getRandomColor() + ");")
+}
+
+function getRandomDegree() {
+  return Math.floor(Math.random() * 360);
+}
+
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
 }
 
