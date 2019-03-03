@@ -1,3 +1,6 @@
+const allMusic = ["cold.mp3", "bonfire.mp3", "betty.mp3", "babylon.mp3", "bangarang.mp3",
+                  "closer.mp3", "halloween.mp3", "internet.mp3", "motivation.mp3", "somebody.mp3"];
+
 window.addEventListener('keyup', function(e){
    let code = e.which || e.keyCode;
    if (code == '38') {  // Up
@@ -12,6 +15,9 @@ window.addEventListener('keyup', function(e){
    }else if (code == '39') { // Right
      const right = document.getElementsByClassName('right')[0];
      changeImage(right, "right");
+   }else if (code == '32') { // Space
+     const music = document.getElementsByClassName('music')[0];
+     changeMusic(music);
    }
 });
 
@@ -23,4 +29,14 @@ function changeImage(element, origin){
     src = origin + ".png";
   }
   element.setAttribute("src", src);
+}
+
+function changeMusic(element){
+  let src = element.getAttribute("src");
+  let random = Math.floor(Math.random() * allMusic.length);
+  if(src == allMusic[random]) {
+    changeMusic(element);
+  }else {
+    element.setAttribute("src", allMusic[random]);
+  }
 }
