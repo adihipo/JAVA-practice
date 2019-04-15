@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class JsonFromAPI {
@@ -15,22 +13,18 @@ public class JsonFromAPI {
     return text;
   }
 
-  public String[] jsonGetRequest(String urlQueryString) {
+  public String[] jsonGetRequest(String urlQueryString) throws IOException {
     String json = null;
-    try {
-      URL url = new URL(urlQueryString);
-      HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-      connection.setDoOutput(true);
-      connection.setInstanceFollowRedirects(false);
-      connection.setRequestMethod("GET");
-      connection.setRequestProperty("Content-Type", "application/json");
-      connection.setRequestProperty("charset", "utf-8");
-      connection.connect();
-      InputStream inStream = connection.getInputStream();
-      json = streamToString(inStream);
-    } catch (IOException ex) {
-      ex.printStackTrace();
-    }
+    URL url = new URL(urlQueryString);
+    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+    connection.setDoOutput(true);
+    connection.setInstanceFollowRedirects(false);
+    connection.setRequestMethod("GET");
+    connection.setRequestProperty("Content-Type", "application/json");
+    connection.setRequestProperty("charset", "utf-8");
+    connection.connect();
+    InputStream inStream = connection.getInputStream();
+    json = streamToString(inStream);
     return jsonToListOfStrings(json);
   }
 

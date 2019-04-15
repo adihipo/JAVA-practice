@@ -16,14 +16,14 @@ import java.util.List;
 public class PDFwriter {
 
   private final String RESULT_FOLDER = "C:\\Users\\Adi\\Desktop";
+  private final String FILE_NAME = "example.pdf";
   private PDFont pdfFont = PDType1Font.HELVETICA;
   private float fontSize = 12;
   private float leading = 1.5f * fontSize;
   private float margin = 35;
   private List<String> lines = new ArrayList<>();
-  private String text = "";
 
-  public void createPDF() throws Exception {
+  public void createPDF(String[] paragraphs) throws Exception {
     PDDocument doc = null;
     try {
       doc = new PDDocument();
@@ -36,14 +36,7 @@ public class PDFwriter {
       float startX = mediabox.getLowerLeftX() + margin;
       float startY = mediabox.getUpperRightY() - margin;
 
-      text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam non arcu nec lorem rhoncus fringilla sit amet vitae sapien. Donec a elementum sem. Etiam porttitor feugiat nunc, ut dapibus magna dictum eu. Maecenas tempor nunc diam, ut cursus nisi accumsan eu. Cras rutrum nunc eget mi faucibus, non efficitur arcu elementum. Etiam ac elit sed augue dictum tincidunt sed sed sem. Phasellus leo sem, tincidunt id condimentum et, tempus vel nulla. Fusce malesuada eu nisi non viverra. Quisque sit amet eleifend ante. Nullam sit amet euismod ex. Vivamus quis iaculis ex.";
-      addLines(width);
-      addBreak();
-      text = "Vivamus sed eleifend dolor, ut pulvinar odio. Aenean faucibus a lectus et euismod. Nullam in sapien eros. Aliquam eget lacinia neque. Praesent vel libero at eros molestie placerat. Curabitur id aliquam ligula. Sed sed felis malesuada massa blandit molestie. Aenean nisi ligula, mattis et auctor vitae, sagittis sit amet metus. Aliquam a mauris ac ipsum vulputate lobortis. Nam bibendum odio felis, vel eleifend odio dignissim et. Sed non efficitur nibh. Aenean a bibendum nisi, et iaculis mauris. Duis eu tincidunt mi, vitae aliquam mauris. In tristique id ipsum et bibendum. Morbi ornare, erat sit amet ornare luctus, ante justo tincidunt lorem, ac porttitor ligula lectus feugiat lorem.";
-      addLines(width);
-      addBreak();
-      text = "Praesent lacinia ultricies leo nec dictum. Sed sollicitudin lacus dolor, sit amet consequat risus vulputate vitae. Quisque laoreet nisl metus, nec auctor felis interdum ac. Integer eros erat, gravida sit amet sem et, consequat iaculis diam. Suspendisse convallis nibh ac blandit ullamcorper. Nunc cursus orci est, sit amet imperdiet tellus hendrerit consequat. Nunc sit amet accumsan dui, at rutrum urna.";
-      addLines(width);
+      buildPage(paragraphs, width);
 
       contentStream.beginText();
       contentStream.setFont(pdfFont, fontSize);
@@ -55,7 +48,7 @@ public class PDFwriter {
       contentStream.endText();
       contentStream.close();
 
-      doc.save(new File(RESULT_FOLDER, "example.pdf"));
+      doc.save(new File(RESULT_FOLDER, FILE_NAME));
     } finally {
       if (doc != null) {
         doc.close();
@@ -63,7 +56,7 @@ public class PDFwriter {
     }
   }
 
-  public void addLines(float width) throws Exception {
+  public void addLines(String text, float width) throws Exception {
     int lastSpace = -1;
     while (text.length() > 0) {
       int spaceIndex = text.indexOf(' ', lastSpace + 1);
@@ -87,8 +80,16 @@ public class PDFwriter {
     }
   }
 
-  public void addBreak() throws Exception {
+  public void addBreak() {
     lines.add("");
+  }
+
+  public void buildPage(String[] paragraphs, float width) throws Exception{
+    addLines(paragraphs[0], width);
+    for (int i = 1; i < paragraphs.length; i++) {
+      addBreak();
+      addLines(paragraphs[i], width);
+    }
   }
 
 }
