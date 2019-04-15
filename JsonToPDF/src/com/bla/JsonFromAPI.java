@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class JsonFromAPI {
@@ -13,7 +15,7 @@ public class JsonFromAPI {
     return text;
   }
 
-  public String jsonGetRequest(String urlQueryString) {
+  public String[] jsonGetRequest(String urlQueryString) {
     String json = null;
     try {
       URL url = new URL(urlQueryString);
@@ -29,7 +31,12 @@ public class JsonFromAPI {
     } catch (IOException ex) {
       ex.printStackTrace();
     }
-    return json;
+    return jsonToListOfStrings(json);
+  }
+
+  public String[] jsonToListOfStrings(String json) {
+    json = json.substring(2, json.length() - 2);
+    return json.split("\\W{1},\\W{1}");
   }
 
 }
