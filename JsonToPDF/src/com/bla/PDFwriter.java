@@ -15,7 +15,7 @@ import java.util.List;
 //PDFBOX-ot le kellett tölteni hozzá. External lib. Ilyesmi nélkül kurvára nehéz...
 public class PDFwriter {
 
-  private final String RESULT_FOLDER = "C:\\Users\\Adi\\Desktop";
+  private final String RESULT_FOLDER = "./";
   private final String FILE_NAME = "example.pdf";
   private PDFont pdfFont = PDType1Font.HELVETICA;
   private float fontSize = 12;
